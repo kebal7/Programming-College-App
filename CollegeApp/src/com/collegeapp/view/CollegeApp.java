@@ -4,6 +4,11 @@ import com.collegeapp.model.StudentModel;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ *
+ * @author Kebal Badal LMU ID: 23048668
+ */
+
 public class CollegeApp extends javax.swing.JFrame {
     
     private final ArrayList<StudentModel> studentList;

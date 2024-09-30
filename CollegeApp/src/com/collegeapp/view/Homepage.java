@@ -6,8 +6,9 @@ package com.collegeapp.view;
 
 /**
  *
- * @author Hi-Tech
+ * @author Kebal Badal LMU ID: 23048668
  */
+
 public class Homepage extends javax.swing.JFrame {
 
     /**

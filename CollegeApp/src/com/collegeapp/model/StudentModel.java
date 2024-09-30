@@ -1,5 +1,10 @@
 package com.collegeapp.model;
 
+/**
+ *
+ * @author Kebal Badal LMU ID: 23048668
+ */
+
 public class StudentModel {
 
     private int lmuId;
