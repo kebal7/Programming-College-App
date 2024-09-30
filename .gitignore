@@ -28,3 +28,4 @@ replay_pid*
 /test/
 manifest.mf
 build.xml
+/College App/nbproject/private/
