@@ -28,9 +28,10 @@ public class Homepage extends javax.swing.JFrame {
     private void initComponents() {
 
         sideNavBarPnl = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        homeBtn = new javax.swing.JButton();
+        studentListBtn = new javax.swing.JButton();
+        adminControlBtn = new javax.swing.JButton();
+        aboutUsBtn = new javax.swing.JButton();
         mainTitleBarPnl = new javax.swing.JPanel();
         mainTitleLbl = new javax.swing.JLabel();
 
@@ -42,17 +43,29 @@ public class Homepage extends javax.swing.JFrame {
 
         sideNavBarPnl.setBackground(new java.awt.Color(169, 0, 211));
 
-        jButton1.setText("jButton1");
-        jButton1.setMaximumSize(new java.awt.Dimension(75, 25));
-        jButton1.setMinimumSize(new java.awt.Dimension(75, 25));
-        jButton1.setPreferredSize(new java.awt.Dimension(75, 25));
+        homeBtn.setText("Home");
+        homeBtn.setMaximumSize(new java.awt.Dimension(75, 25));
+        homeBtn.setMinimumSize(new java.awt.Dimension(75, 25));
+        homeBtn.setPreferredSize(new java.awt.Dimension(75, 25));
 
-        jButton2.setText("jButton2");
-        jButton2.setMaximumSize(new java.awt.Dimension(75, 25));
-        jButton2.setMinimumSize(new java.awt.Dimension(75, 25));
-        jButton2.setPreferredSize(new java.awt.Dimension(75, 25));
+        studentListBtn.setText("Student List");
+        studentListBtn.setMaximumSize(new java.awt.Dimension(75, 25));
+        studentListBtn.setMinimumSize(new java.awt.Dimension(75, 25));
+        studentListBtn.setPreferredSize(new java.awt.Dimension(75, 25));
+        studentListBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                studentListBtnActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("jButton3");
+        adminControlBtn.setText("Admin Control");
+
+        aboutUsBtn.setText("About Us");
+        aboutUsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutUsBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout sideNavBarPnlLayout = new javax.swing.GroupLayout(sideNavBarPnl);
         sideNavBarPnl.setLayout(sideNavBarPnlLayout);
@@ -61,21 +74,24 @@ public class Homepage extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sideNavBarPnlLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(sideNavBarPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(adminControlBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                    .addComponent(studentListBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(homeBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(aboutUsBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))
                 .addContainerGap())
         );
         sideNavBarPnlLayout.setVerticalGroup(
             sideNavBarPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(sideNavBarPnlLayout.createSequentialGroup()
                 .addGap(108, 108, 108)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(homeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(studentListBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(216, Short.MAX_VALUE))
+                .addComponent(adminControlBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(aboutUsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(172, Short.MAX_VALUE))
         );
 
         mainTitleBarPnl.setBackground(new java.awt.Color(153, 153, 255));
@@ -120,6 +136,14 @@ public class Homepage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void studentListBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentListBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_studentListBtnActionPerformed
+
+    private void aboutUsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutUsBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_aboutUsBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -156,11 +180,12 @@ public class Homepage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton aboutUsBtn;
+    private javax.swing.JButton adminControlBtn;
+    private javax.swing.JButton homeBtn;
     private javax.swing.JPanel mainTitleBarPnl;
     private javax.swing.JLabel mainTitleLbl;
     private javax.swing.JPanel sideNavBarPnl;
+    private javax.swing.JButton studentListBtn;
     // End of variables declaration//GEN-END:variables
 }
