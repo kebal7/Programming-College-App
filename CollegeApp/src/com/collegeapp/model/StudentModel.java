@@ -2,7 +2,7 @@ package com.collegeapp.model;
 
 /**
  *
- * @author Prithivi
+ * @author Kebal Badal, LMU ID: 23048668
  */
 public class StudentModel {
     private int lmuId;

@@ -7,7 +7,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Prithivi
+ * @author Kebal Badal, LMU ID: 23048668
  */
 public class CollegeApp extends javax.swing.JFrame {
 
