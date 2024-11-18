@@ -44,6 +44,13 @@ public class CollegeApp extends javax.swing.JFrame {
         spTblStudent = new javax.swing.JScrollPane();
         tblStudent = new javax.swing.JTable();
         lblTblStudentTitle = new javax.swing.JLabel();
+        txtFldFormLmuId = new javax.swing.JTextField();
+        txtFldFormName = new javax.swing.JTextField();
+        txtFieldFormProgram = new javax.swing.JTextField();
+        txtFldFormContact = new javax.swing.JTextField();
+        txtFldFormAge = new javax.swing.JTextField();
+        btnRegister = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
         pnlAdminControl = new javax.swing.JPanel();
         pnlAboutUs = new javax.swing.JPanel();
         pnlLoginScreen = new javax.swing.JPanel();
@@ -165,26 +172,101 @@ public class CollegeApp extends javax.swing.JFrame {
         lblTblStudentTitle.setText("Student Information");
         lblTblStudentTitle.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(234, 192, 32)));
 
+        txtFldFormLmuId.setBackground(new java.awt.Color(0, 0, 0));
+        txtFldFormLmuId.setForeground(new java.awt.Color(234, 192, 32));
+        txtFldFormLmuId.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(234, 192, 32), 2), "LMU ID", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(234, 192, 32))); // NOI18N
+        txtFldFormLmuId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFldFormLmuIdActionPerformed(evt);
+            }
+        });
+
+        txtFldFormName.setBackground(new java.awt.Color(0, 0, 0));
+        txtFldFormName.setForeground(new java.awt.Color(234, 192, 32));
+        txtFldFormName.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(234, 192, 32), 2), "Name", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(234, 192, 32))); // NOI18N
+
+        txtFieldFormProgram.setBackground(new java.awt.Color(0, 0, 0));
+        txtFieldFormProgram.setForeground(new java.awt.Color(234, 192, 32));
+        txtFieldFormProgram.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(234, 192, 32), 2), "Program", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(234, 192, 32))); // NOI18N
+
+        txtFldFormContact.setBackground(new java.awt.Color(0, 0, 0));
+        txtFldFormContact.setForeground(new java.awt.Color(234, 192, 32));
+        txtFldFormContact.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(234, 192, 32), 2), "Contact No.", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(234, 192, 32))); // NOI18N
+
+        txtFldFormAge.setBackground(new java.awt.Color(0, 0, 0));
+        txtFldFormAge.setForeground(new java.awt.Color(234, 192, 32));
+        txtFldFormAge.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(234, 192, 32), 2), "Age", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(234, 192, 32))); // NOI18N
+
+        btnRegister.setBackground(new java.awt.Color(234, 192, 32));
+        btnRegister.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnRegister.setText("Register");
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterActionPerformed(evt);
+            }
+        });
+
+        btnUpdate.setBackground(new java.awt.Color(234, 192, 32));
+        btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlStudentListLayout = new javax.swing.GroupLayout(pnlStudentList);
         pnlStudentList.setLayout(pnlStudentListLayout);
         pnlStudentListLayout.setHorizontalGroup(
             pnlStudentListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlStudentListLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
                 .addGroup(pnlStudentListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTblStudentTitle)
-                    .addComponent(spTblStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 1020, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlStudentListLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(lblTblStudentTitle)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlStudentListLayout.createSequentialGroup()
+                        .addContainerGap(45, Short.MAX_VALUE)
+                        .addGroup(pnlStudentListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(spTblStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 1020, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlStudentListLayout.createSequentialGroup()
+                                .addGroup(pnlStudentListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(btnRegister, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                                    .addComponent(txtFldFormLmuId))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(pnlStudentListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtFldFormName, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                                    .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(35, 35, 35)
+                                .addComponent(txtFieldFormProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addComponent(txtFldFormContact, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(41, 41, 41)
+                                .addComponent(txtFldFormAge, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap())
         );
         pnlStudentListLayout.setVerticalGroup(
             pnlStudentListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlStudentListLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(21, 21, 21)
                 .addComponent(lblTblStudentTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(spTblStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlStudentListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFldFormLmuId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFldFormName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFieldFormProgram, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFldFormContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFldFormAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlStudentListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
+
+        btnRegister.getAccessibleContext().setAccessibleName("Register");
 
         tabPaneMain.addTab("Student List", pnlStudentList);
 
@@ -503,6 +585,33 @@ public class CollegeApp extends javax.swing.JFrame {
         loadScreen("LoginScreen"); // Load the main screen
     }//GEN-LAST:event_btnLogoutActionPerformed
 
+    private void txtFldFormLmuIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFldFormLmuIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFldFormLmuIdActionPerformed
+      
+            
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        try{
+            int lmuId = Integer.parseInt(txtFldFormLmuId.getText());
+            String name = txtFldFormName.getText();
+            String program = txtFieldFormProgram.getText();
+            String contactNo =  txtFldFormContact.getText();
+            short age = Short.parseShort(txtFldFormAge.getText());
+            
+            StudentModel student = new  StudentModel(lmuId, name, program, contactNo, age);
+            registerStudent(student);
+        }
+        catch(NumberFormatException e)
+        {
+            System.out.println("Please provide valid integer in LMU ID");
+        }    
+         
+    }//GEN-LAST:event_btnRegisterActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -543,6 +652,8 @@ public class CollegeApp extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnRegister;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel lblLoading;
     private javax.swing.JLabel lblLoadingLogo;
     private javax.swing.JLabel lblLoginError;
@@ -567,6 +678,11 @@ public class CollegeApp extends javax.swing.JFrame {
     private javax.swing.JScrollPane spTblStudent;
     private javax.swing.JTabbedPane tabPaneMain;
     private javax.swing.JTable tblStudent;
+    private javax.swing.JTextField txtFieldFormProgram;
+    private javax.swing.JTextField txtFldFormAge;
+    private javax.swing.JTextField txtFldFormContact;
+    private javax.swing.JTextField txtFldFormLmuId;
+    private javax.swing.JTextField txtFldFormName;
     private javax.swing.JTextField txtFldLoginUsername;
     // End of variables declaration//GEN-END:variables
 }
