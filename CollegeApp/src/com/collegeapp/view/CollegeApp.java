@@ -266,8 +266,6 @@ public class CollegeApp extends javax.swing.JFrame {
                 .addContainerGap(62, Short.MAX_VALUE))
         );
 
-        btnRegister.getAccessibleContext().setAccessibleName("Register");
-
         tabPaneMain.addTab("Student List", pnlStudentList);
 
         pnlAdminControl.setBackground(new java.awt.Color(0, 0, 0));
