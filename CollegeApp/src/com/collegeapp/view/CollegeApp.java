@@ -1,5 +1,6 @@
 package com.collegeapp.view;
 
+import com.collegeapp.logic.Validation;
 import com.collegeapp.model.StudentModel;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,6 +14,8 @@ public class CollegeApp extends javax.swing.JFrame {
 
     private List<StudentModel> studentList;
     private java.awt.CardLayout cardLayout;
+    private com.collegeapp.logic.Validation validation;
+    
 
     /**
      * Creates new form CollegeApp
@@ -21,7 +24,8 @@ public class CollegeApp extends javax.swing.JFrame {
         initComponents();
         initializeLayout(); // Set up CardLayout and add screens
         initializeData(); // Initialize student data and table
-        startProgress(); // Show loading screen and initiate progress
+        startProgress(); // Show loading screen and initiate progress 
+        initializeTools(); //Initialize custom tools
     }
 
     /**
@@ -497,6 +501,11 @@ public class CollegeApp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 // Method to set up the CardLayout and add panels
 
+    private void initializeTools()
+    {
+        validation = new Validation();
+    }
+    
     private void initializeLayout() {
         cardLayout = new java.awt.CardLayout();
         getContentPane().setLayout(cardLayout);
@@ -561,8 +570,11 @@ public class CollegeApp extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // Get the username and password input
-        String username = txtFldLoginUsername.getText();
-        String password = new String(pwdFldLogin.getPassword());
+        
+        String username = "admin";
+        String password = "admin";
+        //String username = txtFldLoginUsername.getText();
+        //String password = new String(pwdFldLogin.getPassword());
 
         // Check if username or password is empty
         if (username.isEmpty() || password.isEmpty()) {
@@ -596,14 +608,20 @@ public class CollegeApp extends javax.swing.JFrame {
             String contactNo =  txtFldFormContact.getText();
             short age = Short.parseShort(txtFldFormAge.getText());
             
-            StudentModel student = new  StudentModel(lmuId, name, program, contactNo, age);
-            registerStudent(student);
+            if(validation.isValidAge(age) == false)
+            {
+                System.out.println("Invalid age");
+            }
+            else
+            {
+                StudentModel student = new  StudentModel(lmuId, name, program, contactNo, age);
+                registerStudent(student);
+            }
         }
         catch(NumberFormatException e)
         {
-            System.out.println("Please provide valid integer in LMU ID");
-        }    
-         
+            System.out.println(e);
+        }       
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
