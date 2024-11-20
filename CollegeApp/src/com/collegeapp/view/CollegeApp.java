@@ -628,31 +628,42 @@ public class CollegeApp extends javax.swing.JFrame {
       
             
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        try{
-            int lmuId = Integer.parseInt(txtFldFormLmuId.getText());
+
+            String lmuId = txtFldFormLmuId.getText();
             String name = txtFldFormName.getText();
             String program = jComboBoxProgram.getSelectedItem().toString();
             String contactNo =  txtFldFormContact.getText();
-            short age = Short.parseShort(txtFldFormAge.getText());
+            String age = txtFldFormAge.getText();
             
-            if(validation.isValidAge(age) == false)
+            javax.swing.JTextField[] formFields = {txtFldFormLmuId, txtFldFormName, txtFldFormContact, txtFldFormAge};
+            
+            if(validation.isEmptyFieldPresent(formFields) == true)
+            {
+                lblFormError.setText("Empty Field Present");
+                lblFormSuccess.setText("");
+            }
+            else if(validation.isValidInteger(lmuId) == false)
+            {
+                lblFormError.setText("Invalid LMU ID");
+                lblFormSuccess.setText("");
+            }
+            else if(validation.isValidInteger(age) == false)
+            {
+                lblFormError.setText("Invalid age");
+                lblFormSuccess.setText("");
+            }    
+            else if(validation.isValidAge(Short.parseShort(age)) == false)
             {
                 lblFormError.setText("Invalid Age, age should be between 16 to 60");
                 lblFormSuccess.setText("");
             }
             else
             {
-                StudentModel student = new  StudentModel(lmuId, name, program, contactNo, age);
+                StudentModel student = new  StudentModel(Integer.parseInt(lmuId), name, program, contactNo, Short.parseShort(age));
                 registerStudent(student);
                 lblFormError.setText("");
                 lblFormSuccess.setText(lmuId + "- " + name + " added to list sucessfully" );
-            }
-        }
-        catch(NumberFormatException e)
-        {
-            lblFormError.setText(e.toString());
-            lblFormSuccess.setText("");
-        }       
+            }     
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
