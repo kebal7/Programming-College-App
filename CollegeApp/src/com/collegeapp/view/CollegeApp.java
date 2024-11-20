@@ -55,6 +55,8 @@ public class CollegeApp extends javax.swing.JFrame {
         btnRegister = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         jComboBoxProgram = new javax.swing.JComboBox<>();
+        lblFormError = new javax.swing.JLabel();
+        lblFormSuccess = new javax.swing.JLabel();
         pnlAdminControl = new javax.swing.JPanel();
         pnlAboutUs = new javax.swing.JPanel();
         pnlLoginScreen = new javax.swing.JPanel();
@@ -225,6 +227,14 @@ public class CollegeApp extends javax.swing.JFrame {
             }
         });
 
+        lblFormError.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblFormError.setForeground(new java.awt.Color(255, 0, 0));
+        lblFormError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        lblFormSuccess.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblFormSuccess.setForeground(new java.awt.Color(51, 102, 255));
+        lblFormSuccess.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout pnlStudentListLayout = new javax.swing.GroupLayout(pnlStudentList);
         pnlStudentList.setLayout(pnlStudentListLayout);
         pnlStudentListLayout.setHorizontalGroup(
@@ -239,12 +249,19 @@ public class CollegeApp extends javax.swing.JFrame {
                     .addComponent(txtFldFormName, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBoxProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(txtFldFormContact, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(txtFldFormAge, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(221, 221, 221))
+                .addGroup(pnlStudentListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlStudentListLayout.createSequentialGroup()
+                        .addComponent(jComboBoxProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(txtFldFormContact, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtFldFormAge, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlStudentListLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(pnlStudentListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblFormError, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblFormSuccess, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(244, 244, 244))
             .addGroup(pnlStudentListLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlStudentListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,8 +289,12 @@ public class CollegeApp extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlStudentListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlStudentListLayout.createSequentialGroup()
+                        .addComponent(lblFormError, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblFormSuccess, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabPaneMain.addTab("Student List", pnlStudentList);
@@ -616,17 +637,21 @@ public class CollegeApp extends javax.swing.JFrame {
             
             if(validation.isValidAge(age) == false)
             {
-                System.out.println("Invalid age");
+                lblFormError.setText("Invalid Age, age should be between 16 to 60");
+                lblFormSuccess.setText("");
             }
             else
             {
                 StudentModel student = new  StudentModel(lmuId, name, program, contactNo, age);
                 registerStudent(student);
+                lblFormError.setText("");
+                lblFormSuccess.setText(lmuId + "- " + name + " added to list sucessfully" );
             }
         }
         catch(NumberFormatException e)
         {
-            System.out.println(e);
+            lblFormError.setText(e.toString());
+            lblFormSuccess.setText("");
         }       
     }//GEN-LAST:event_btnRegisterActionPerformed
 
@@ -681,6 +706,8 @@ public class CollegeApp extends javax.swing.JFrame {
     private javax.swing.JButton btnRegister;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> jComboBoxProgram;
+    private javax.swing.JLabel lblFormError;
+    private javax.swing.JLabel lblFormSuccess;
     private javax.swing.JLabel lblLoading;
     private javax.swing.JLabel lblLoadingLogo;
     private javax.swing.JLabel lblLoginError;
