@@ -50,11 +50,11 @@ public class CollegeApp extends javax.swing.JFrame {
         lblTblStudentTitle = new javax.swing.JLabel();
         txtFldFormLmuId = new javax.swing.JTextField();
         txtFldFormName = new javax.swing.JTextField();
-        txtFieldFormProgram = new javax.swing.JTextField();
         txtFldFormContact = new javax.swing.JTextField();
         txtFldFormAge = new javax.swing.JTextField();
         btnRegister = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
+        jComboBoxProgram = new javax.swing.JComboBox<>();
         pnlAdminControl = new javax.swing.JPanel();
         pnlAboutUs = new javax.swing.JPanel();
         pnlLoginScreen = new javax.swing.JPanel();
@@ -103,7 +103,8 @@ public class CollegeApp extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lblMainBarSlogan, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(102, 102, 102))
         );
         pnlMainBarLayout.setVerticalGroup(
             pnlMainBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,9 +112,10 @@ public class CollegeApp extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlMainBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblMainBarLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblMainBarSlogan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlMainBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblMainBarSlogan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         tabPaneMain.setBackground(new java.awt.Color(234, 192, 32));
@@ -189,10 +191,6 @@ public class CollegeApp extends javax.swing.JFrame {
         txtFldFormName.setForeground(new java.awt.Color(234, 192, 32));
         txtFldFormName.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(234, 192, 32), 2), "Name", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(234, 192, 32))); // NOI18N
 
-        txtFieldFormProgram.setBackground(new java.awt.Color(0, 0, 0));
-        txtFieldFormProgram.setForeground(new java.awt.Color(234, 192, 32));
-        txtFieldFormProgram.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(234, 192, 32), 2), "Program", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(234, 192, 32))); // NOI18N
-
         txtFldFormContact.setBackground(new java.awt.Color(0, 0, 0));
         txtFldFormContact.setForeground(new java.awt.Color(234, 192, 32));
         txtFldFormContact.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(234, 192, 32), 2), "Contact No.", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(234, 192, 32))); // NOI18N
@@ -219,55 +217,63 @@ public class CollegeApp extends javax.swing.JFrame {
             }
         });
 
+        jComboBoxProgram.setBackground(new java.awt.Color(234, 192, 32));
+        jComboBoxProgram.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bachelor in Computing", "Bachelor in Networking", "Bachelor in Cyber Security", "Bachelor in Artificial Intelligence" }));
+        jComboBoxProgram.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxProgramActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlStudentListLayout = new javax.swing.GroupLayout(pnlStudentList);
         pnlStudentList.setLayout(pnlStudentListLayout);
         pnlStudentListLayout.setHorizontalGroup(
             pnlStudentListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlStudentListLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlStudentListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFldFormLmuId, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlStudentListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtFldFormName, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBoxProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(txtFldFormContact, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(txtFldFormAge, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(221, 221, 221))
             .addGroup(pnlStudentListLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(pnlStudentListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlStudentListLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
+                        .addGap(39, 39, 39)
                         .addComponent(lblTblStudentTitle)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlStudentListLayout.createSequentialGroup()
-                        .addContainerGap(45, Short.MAX_VALUE)
-                        .addGroup(pnlStudentListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(spTblStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 1020, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnlStudentListLayout.createSequentialGroup()
-                                .addGroup(pnlStudentListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(btnRegister, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                                    .addComponent(txtFldFormLmuId))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(pnlStudentListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtFldFormName, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                                    .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(35, 35, 35)
-                                .addComponent(txtFieldFormProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(txtFldFormContact, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(41, 41, 41)
-                                .addComponent(txtFldFormAge, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 840, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(spTblStudent, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1020, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlStudentListLayout.setVerticalGroup(
             pnlStudentListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlStudentListLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addContainerGap()
                 .addComponent(lblTblStudentTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(spTblStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlStudentListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtFldFormLmuId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFldFormName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFieldFormProgram, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFldFormAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtFldFormContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFldFormAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFldFormName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlStudentListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         tabPaneMain.addTab("Student List", pnlStudentList);
@@ -311,7 +317,7 @@ public class CollegeApp extends javax.swing.JFrame {
             .addComponent(pnlMainBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnlMainScreenLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tabPaneMain, javax.swing.GroupLayout.DEFAULT_SIZE, 1118, Short.MAX_VALUE)
+                .addComponent(tabPaneMain)
                 .addContainerGap())
         );
         pnlMainScreenLayout.setVerticalGroup(
@@ -319,7 +325,7 @@ public class CollegeApp extends javax.swing.JFrame {
             .addGroup(pnlMainScreenLayout.createSequentialGroup()
                 .addComponent(pnlMainBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabPaneMain, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE))
+                .addComponent(tabPaneMain))
         );
 
         pnlLoginScreen.setBackground(new java.awt.Color(0, 0, 0));
@@ -604,7 +610,7 @@ public class CollegeApp extends javax.swing.JFrame {
         try{
             int lmuId = Integer.parseInt(txtFldFormLmuId.getText());
             String name = txtFldFormName.getText();
-            String program = txtFieldFormProgram.getText();
+            String program = jComboBoxProgram.getSelectedItem().toString();
             String contactNo =  txtFldFormContact.getText();
             short age = Short.parseShort(txtFldFormAge.getText());
             
@@ -627,6 +633,10 @@ public class CollegeApp extends javax.swing.JFrame {
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void jComboBoxProgramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxProgramActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxProgramActionPerformed
 
     /**
      * @param args the command line arguments
@@ -670,6 +680,7 @@ public class CollegeApp extends javax.swing.JFrame {
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnRegister;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JComboBox<String> jComboBoxProgram;
     private javax.swing.JLabel lblLoading;
     private javax.swing.JLabel lblLoadingLogo;
     private javax.swing.JLabel lblLoginError;
@@ -694,7 +705,6 @@ public class CollegeApp extends javax.swing.JFrame {
     private javax.swing.JScrollPane spTblStudent;
     private javax.swing.JTabbedPane tabPaneMain;
     private javax.swing.JTable tblStudent;
-    private javax.swing.JTextField txtFieldFormProgram;
     private javax.swing.JTextField txtFldFormAge;
     private javax.swing.JTextField txtFldFormContact;
     private javax.swing.JTextField txtFldFormLmuId;
