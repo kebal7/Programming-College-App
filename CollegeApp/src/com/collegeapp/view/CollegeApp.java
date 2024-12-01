@@ -59,6 +59,12 @@ public class CollegeApp extends javax.swing.JFrame {
         lblFormSuccess = new javax.swing.JLabel();
         pnlAdminControl = new javax.swing.JPanel();
         pnlAboutUs = new javax.swing.JPanel();
+        pnlVivaList = new javax.swing.JPanel();
+        btnGenerateVivaList = new javax.swing.JButton();
+        spTblStudent1 = new javax.swing.JScrollPane();
+        tblStudent1 = new javax.swing.JTable();
+        lblTblVivaList = new javax.swing.JLabel();
+        jComboBoxVivaListProgram = new javax.swing.JComboBox<>();
         pnlLoginScreen = new javax.swing.JPanel();
         pnlLoginLeft = new javax.swing.JPanel();
         lblLoginLogo = new javax.swing.JLabel();
@@ -170,8 +176,10 @@ public class CollegeApp extends javax.swing.JFrame {
             tblStudent.getColumnModel().getColumn(1).setResizable(false);
             tblStudent.getColumnModel().getColumn(2).setResizable(false);
             tblStudent.getColumnModel().getColumn(3).setResizable(false);
+            tblStudent.getColumnModel().getColumn(3).setHeaderValue("Contact");
             tblStudent.getColumnModel().getColumn(4).setResizable(false);
             tblStudent.getColumnModel().getColumn(4).setPreferredWidth(40);
+            tblStudent.getColumnModel().getColumn(4).setHeaderValue("Age");
         }
 
         lblTblStudentTitle.setBackground(new java.awt.Color(234, 192, 32));
@@ -280,20 +288,22 @@ public class CollegeApp extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(spTblStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlStudentListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFldFormLmuId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFldFormAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlStudentListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jComboBoxProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFldFormContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFldFormName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlStudentListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtFldFormLmuId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtFldFormAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtFldFormContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtFldFormName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlStudentListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlStudentListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlStudentListLayout.createSequentialGroup()
                         .addComponent(lblFormError, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblFormSuccess, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblFormSuccess, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlStudentListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -330,6 +340,101 @@ public class CollegeApp extends javax.swing.JFrame {
         );
 
         tabPaneMain.addTab("About Us", pnlAboutUs);
+
+        pnlVivaList.setBackground(new java.awt.Color(0, 0, 0));
+
+        btnGenerateVivaList.setBackground(new java.awt.Color(234, 192, 32));
+        btnGenerateVivaList.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnGenerateVivaList.setText("Generate Viva List");
+        btnGenerateVivaList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerateVivaListActionPerformed(evt);
+            }
+        });
+
+        tblStudent1.setBackground(new java.awt.Color(234, 192, 32));
+        tblStudent1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "LMU ID", "Full Name", "Program"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblStudent1.setGridColor(new java.awt.Color(0, 0, 0));
+        tblStudent1.setSelectionBackground(new java.awt.Color(0, 0, 0));
+        tblStudent1.setSelectionForeground(new java.awt.Color(234, 192, 32));
+        tblStudent1.setShowGrid(true);
+        tblStudent1.getTableHeader().setReorderingAllowed(false);
+        spTblStudent1.setViewportView(tblStudent1);
+        if (tblStudent1.getColumnModel().getColumnCount() > 0) {
+            tblStudent1.getColumnModel().getColumn(0).setResizable(false);
+            tblStudent1.getColumnModel().getColumn(1).setResizable(false);
+            tblStudent1.getColumnModel().getColumn(2).setResizable(false);
+        }
+
+        lblTblVivaList.setBackground(new java.awt.Color(234, 192, 32));
+        lblTblVivaList.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTblVivaList.setForeground(new java.awt.Color(234, 192, 32));
+        lblTblVivaList.setText("Viva List");
+        lblTblVivaList.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(234, 192, 32)));
+
+        jComboBoxVivaListProgram.setBackground(new java.awt.Color(234, 192, 32));
+        jComboBoxVivaListProgram.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bachelor in Computing", "Bachelor in Networking", "Bachelor in Cyber Security", "Bachelor in Artificial Intelligence" }));
+        jComboBoxVivaListProgram.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxVivaListProgramActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlVivaListLayout = new javax.swing.GroupLayout(pnlVivaList);
+        pnlVivaList.setLayout(pnlVivaListLayout);
+        pnlVivaListLayout.setHorizontalGroup(
+            pnlVivaListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlVivaListLayout.createSequentialGroup()
+                .addGroup(pnlVivaListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlVivaListLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(lblTblVivaList))
+                    .addGroup(pnlVivaListLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(spTblStudent1, javax.swing.GroupLayout.PREFERRED_SIZE, 1020, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlVivaListLayout.createSequentialGroup()
+                        .addGap(245, 245, 245)
+                        .addComponent(btnGenerateVivaList, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(123, Short.MAX_VALUE))
+            .addGroup(pnlVivaListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlVivaListLayout.createSequentialGroup()
+                    .addGap(17, 17, 17)
+                    .addComponent(jComboBoxVivaListProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(937, Short.MAX_VALUE)))
+        );
+        pnlVivaListLayout.setVerticalGroup(
+            pnlVivaListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlVivaListLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTblVivaList)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(btnGenerateVivaList, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(spTblStudent1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
+            .addGroup(pnlVivaListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlVivaListLayout.createSequentialGroup()
+                    .addGap(40, 40, 40)
+                    .addComponent(jComboBoxVivaListProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(320, Short.MAX_VALUE)))
+        );
+
+        tabPaneMain.addTab("Viva List", pnlVivaList);
 
         javax.swing.GroupLayout pnlMainScreenLayout = new javax.swing.GroupLayout(pnlMainScreen);
         pnlMainScreen.setLayout(pnlMainScreenLayout);
@@ -499,7 +604,7 @@ public class CollegeApp extends javax.swing.JFrame {
                 .addGroup(pnlLoadingScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblLoading)
                     .addComponent(pgBarSplashScreen, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(375, Short.MAX_VALUE))
+                .addContainerGap(363, Short.MAX_VALUE))
         );
         pnlLoadingScreenLayout.setVerticalGroup(
             pnlLoadingScreenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -510,18 +615,28 @@ public class CollegeApp extends javax.swing.JFrame {
                 .addComponent(pgBarSplashScreen, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblLoading)
-                .addContainerGap(118, Short.MAX_VALUE))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlLoadingScreen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 1130, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(pnlLoadingScreen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlLoadingScreen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 514, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(pnlLoadingScreen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
         pack();
@@ -559,7 +674,7 @@ public class CollegeApp extends javax.swing.JFrame {
             @Override
             protected Void doInBackground() throws Exception {
                 for (int i = 0; i <= 100; i++) {
-                    Thread.sleep(30); // Simulated delay for progress bar
+                    Thread.sleep(0); // Simulated delay for progress bar
                     publish(i);
                 }
                 return null;
@@ -674,6 +789,14 @@ public class CollegeApp extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxProgramActionPerformed
 
+    private void jComboBoxVivaListProgramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxVivaListProgramActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxVivaListProgramActionPerformed
+
+    private void btnGenerateVivaListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateVivaListActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGenerateVivaListActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -712,11 +835,13 @@ public class CollegeApp extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGenerateVivaList;
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnRegister;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> jComboBoxProgram;
+    private javax.swing.JComboBox<String> jComboBoxVivaListProgram;
     private javax.swing.JLabel lblFormError;
     private javax.swing.JLabel lblFormSuccess;
     private javax.swing.JLabel lblLoading;
@@ -729,6 +854,7 @@ public class CollegeApp extends javax.swing.JFrame {
     private javax.swing.JLabel lblMainBarLogo;
     private javax.swing.JLabel lblMainBarSlogan;
     private javax.swing.JLabel lblTblStudentTitle;
+    private javax.swing.JLabel lblTblVivaList;
     private javax.swing.JProgressBar pgBarSplashScreen;
     private javax.swing.JPanel pnlAboutUs;
     private javax.swing.JPanel pnlAdminControl;
@@ -739,10 +865,13 @@ public class CollegeApp extends javax.swing.JFrame {
     private javax.swing.JPanel pnlMainBar;
     private javax.swing.JPanel pnlMainScreen;
     private javax.swing.JPanel pnlStudentList;
+    private javax.swing.JPanel pnlVivaList;
     private javax.swing.JPasswordField pwdFldLogin;
     private javax.swing.JScrollPane spTblStudent;
+    private javax.swing.JScrollPane spTblStudent1;
     private javax.swing.JTabbedPane tabPaneMain;
     private javax.swing.JTable tblStudent;
+    private javax.swing.JTable tblStudent1;
     private javax.swing.JTextField txtFldFormAge;
     private javax.swing.JTextField txtFldFormContact;
     private javax.swing.JTextField txtFldFormLmuId;
